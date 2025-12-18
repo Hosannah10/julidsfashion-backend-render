@@ -1,3 +1,4 @@
+import dj_database_url
 import os
 from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,7 +44,12 @@ TEMPLATES = [{'BACKEND':'django.template.backends.django.DjangoTemplates','DIRS'
 
 WSGI_APPLICATION = 'julidsfashion_backend.wsgi.application'
 
-DATABASES = {'default':{'ENGINE':'django.db.backends.sqlite3','NAME': BASE_DIR / 'db.sqlite3'}}
+# DATABASES = {'default':{'ENGINE':'django.db.backends.sqlite3','NAME': BASE_DIR / 'db.sqlite3'}}
+DATABASES = {
+    "default": dj_database_url.config(
+        default=os.environ.get("DATABASE_URL")
+    )
+}
 
 AUTH_PASSWORD_VALIDATORS = []
 
