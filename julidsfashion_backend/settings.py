@@ -45,18 +45,20 @@ TEMPLATES = [{'BACKEND':'django.template.backends.django.DjangoTemplates','DIRS'
 WSGI_APPLICATION = 'julidsfashion_backend.wsgi.application'
 
 # DATABASES = {'default':{'ENGINE':'django.db.backends.sqlite3','NAME': BASE_DIR / 'db.sqlite3'}}
-# DATABASES = {
-#     "default": dj_database_url.config(
-#         default=os.environ.get("DATABASE_URL")
-#     )
-# }
+
 DATABASES = {
     "default": dj_database_url.config(
-        default="sqlite:///db.sqlite3",
-        conn_max_age=600,
-        ssl_require=True
+        default=os.environ.get("postgresql://julidsfashion_backend_render_postgres_user:1aCCJV9IOvtkYJXy8eDA2nBSfdI0a63c@dpg-d520ftngi27c73fl5ql0-a/julidsfashion_backend_render_postgres")
     )
 }
+
+# DATABASES = {
+#     "default": dj_database_url.config(
+#         default="sqlite:///db.sqlite3",
+#         conn_max_age=600,
+#         ssl_require=True
+#     )
+# }
 
 AUTH_PASSWORD_VALIDATORS = []
 
